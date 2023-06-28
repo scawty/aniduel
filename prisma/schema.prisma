@@ -11,8 +11,14 @@ generator client {
   provider = "prisma-client-js"
 }
 
-model Example {
-    id        String   @id @default(cuid())
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
+
+model Character {
+    id          Int      @id @default(autoincrement())
+    updatedAt   DateTime @updatedAt
+    malId       Int
+    name        String
+    imgUrl      String
+    smallImgUrl String
+    malUrl      String
+    elo         Int      @default(1200)
 }
