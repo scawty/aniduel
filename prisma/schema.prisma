@@ -21,4 +21,7 @@ model Character {
     smallImgUrl String
     malUrl      String
     elo         Int      @default(1200)
+
+    @@index([id])
 }
+
