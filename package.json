@@ -17,6 +17,7 @@
     "@trpc/next": "^10.26.0",
     "@trpc/react-query": "^10.26.0",
     "@trpc/server": "^10.26.0",
+    "arpad": "^2.0.0",
     "jakan": "^1.0.5",
     "jikan-node": "^1.2.1",
     "jikants": "^1.2.13",

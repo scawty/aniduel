@@ -42,8 +42,8 @@ export default function Home() {
                 <Image
                   src={matchup?.[0]?.imgUrl || ""}
                   alt={matchup?.[0]?.name || "image1"}
-                  width={200}
-                  height={200}
+                  width={225}
+                  height={350}
                   className="rounded-lg"
                   onClick={handleMatchupResult}
                 ></Image>
@@ -71,8 +71,8 @@ export default function Home() {
                 <Image
                   src={matchup?.[1]?.imgUrl || ""}
                   alt={matchup?.[1]?.name || "image2"}
-                  width={200}
-                  height={200}
+                  width={225}
+                  height={350}
                   className="rounded-lg"
                   onClick={handleMatchupResult}
                 ></Image>
