@@ -1,7 +1,6 @@
 import { z } from "zod";
 import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
-
-const Elo = require("arpad");
+import ELO from "arpad";
 
 export const matchupsRouter = createTRPCRouter({
   getMatchup: publicProcedure.query(async ({ ctx }) => {
@@ -26,7 +25,7 @@ export const matchupsRouter = createTRPCRouter({
   postMatchupResult: publicProcedure
     .input(z.object({ winnerId: z.number(), loserId: z.number() }))
     .mutation(async ({ ctx, input }) => {
-      const elo = new Elo();
+      const elo = new ELO();
 
       const winner = await ctx.prisma.character.findUnique({
         where: { id: input.winnerId },
@@ -35,8 +34,16 @@ export const matchupsRouter = createTRPCRouter({
         where: { id: input.loserId },
       });
 
-      const newWinnerRating = elo.newRatingIfWon(winner?.elo, loser?.elo);
-      const newLoserRating = elo.newRatingIfLost(loser?.elo, winner?.elo);
+      if (!winner) {
+        throw new Error(`Winner with id ${input.winnerId} not found`);
+      }
+
+      if (!loser) {
+        throw new Error(`Loser with id ${input.loserId} not found`);
+      }
+
+      const newWinnerRating = elo.newRatingIfWon(winner.elo, loser.elo);
+      const newLoserRating = elo.newRatingIfLost(loser.elo, winner.elo);
 
       const winnerData = await ctx.prisma.character.update({
         where: { id: input.winnerId },
