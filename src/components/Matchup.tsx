@@ -1,4 +1,4 @@
-import MatchupCard from "./matchupcard";
+import MatchupCard from "~/components/matchupcard";
 import { api } from "~/utils/api";
 
 const Matchup = () => {
