@@ -17,7 +17,7 @@ const MatchupCard = ({ character, isLoading, handleMatchupResult }: Props) => {
             alt={character.name || "image1"}
             width={225}
             height={350}
-            className="rounded-lg"
+            className="rounded-lg hover:cursor-pointer"
             onClick={handleMatchupResult}
           ></Image>
           <h2 className="text-center text-xl">{character.name}</h2>
@@ -42,8 +42,8 @@ const MatchupCard = ({ character, isLoading, handleMatchupResult }: Props) => {
         </div>
       ) : (
         <div className="m-4 h-fit w-[225px] animate-pulse">
-          <div className="h-[350px] w-[225px] rounded-lg border-2 border-indigo-300"></div>
-          <div className="m-2 h-4 rounded bg-indigo-300"></div>
+          <div className="h-[350px] w-[225px] rounded-lg border-2 border-indigo-300 bg-indigo-950"></div>
+          <div className="m-2 h-4 justify-self-center rounded bg-indigo-400"></div>
           <div className="flex w-full justify-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"

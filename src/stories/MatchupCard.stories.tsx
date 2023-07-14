@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import type { Character } from "@prisma/client";
-import { api } from "~/utils/api";
 
 import MatchupCard from "~/components/MatchupCard";
 
