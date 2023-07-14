@@ -31,7 +31,9 @@ export const WithCharacter: Story = {
     <MatchupCard
       isLoading={false}
       character={character}
-      handleMatchupResult={() => {}}
+      handleMatchupResult={() => {
+        return;
+      }}
     />
   ),
 };
