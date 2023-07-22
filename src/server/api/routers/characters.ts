@@ -5,21 +5,20 @@ export const charactersRouter = createTRPCRouter({
   getInfinite: publicProcedure
     .input(
       z.object({
-        limit: z.number().min(1).max(100).nullish(),
+        limit: z.number(),
         cursor: z.number().nullish(),
+        skip: z.number().optional(),
       })
     )
     .query(async ({ ctx, input }) => {
-      const limit = input.limit ?? 1000;
-      const { cursor } = input;
-      const myCursor = cursor ? { id: cursor } : undefined;
+      const { limit, skip, cursor } = input;
 
       const characters = await ctx.prisma.character.findMany({
-        skip: myCursor ? 1 : 0,
+        skip: skip,
         take: limit + 1,
         where: {},
-        cursor: myCursor,
-        orderBy: { elo: "desc" },
+        cursor: cursor ? { id: cursor } : undefined,
+        orderBy: [{ elo: "desc" }, { id: "asc" }],
       });
       let nextCursor: typeof cursor | undefined = undefined;
       if (characters.length > limit) {
