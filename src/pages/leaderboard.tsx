@@ -24,9 +24,7 @@ export default function Leaderboard() {
               </Link>
             </div>
           </header>
-          <div className="flex w-full justify-center justify-items-center overflow-scroll p-4">
-            <RankingTable />
-          </div>
+          <RankingTable />
         </div>
       </main>
     </>

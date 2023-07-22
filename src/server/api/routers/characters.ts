@@ -8,15 +8,20 @@ export const charactersRouter = createTRPCRouter({
         limit: z.number(),
         cursor: z.number().nullish(),
         skip: z.number().optional(),
+        query: z.string().optional(),
       })
     )
     .query(async ({ ctx, input }) => {
-      const { limit, skip, cursor } = input;
+      const { limit, skip, cursor, query } = input;
 
       const characters = await ctx.prisma.character.findMany({
         skip: skip,
         take: limit + 1,
-        where: {},
+        where: {
+          name: {
+            contains: query,
+          },
+        },
         cursor: cursor ? { id: cursor } : undefined,
         orderBy: [{ elo: "desc" }, { id: "asc" }],
       });
