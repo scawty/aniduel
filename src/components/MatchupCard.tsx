@@ -11,7 +11,7 @@ const MatchupCard = ({ character, isLoading, handleMatchupResult }: Props) => {
   return (
     <>
       {!isLoading && character ? (
-        <div className="m-4 h-fit w-[225px] hover:scale-110">
+        <div className="m-4 h-fit w-[225px] hover:scale-105">
           <Image
             src={character.imgUrl || ""}
             alt={character.name || "image1"}
