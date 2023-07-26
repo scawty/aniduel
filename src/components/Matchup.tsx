@@ -60,7 +60,7 @@ const Matchup = () => {
             </div>
             <div className="flex w-full flex-row justify-center">
               <button
-                className="w-16 rounded-md bg-indigo-900 p-1 text-xl"
+                className="rounded-md bg-indigo-800 px-4 py-2 text-xl font-semibold shadow hover:bg-indigo-700"
                 onClick={handleSkip}
               >
                 Skip
