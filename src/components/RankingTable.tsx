@@ -43,7 +43,7 @@ const RankingTable = () => {
         ></input>
       </div>
       {isLoading ? (
-        <div>Loading...</div>
+        <div className="w-full text-center">Loading...</div>
       ) : (
         <div className="flex w-full justify-center justify-items-center p-4">
           <table className="w-full rounded-3xl sm:w-2/3">
@@ -63,12 +63,14 @@ const RankingTable = () => {
                     return (
                       <tr
                         key={character.id}
-                        className="h-10 rounded-md bg-indigo-950 bg-opacity-10 shadow-md hover:cursor-pointer"
+                        className="h-10 rounded-md bg-indigo-950 bg-opacity-10 shadow-md"
                         ref={ref}
                       >
-                        <td className="text-center text-xl">{currentRank}</td>
+                        <td className="text-center text-xl font-semibold">
+                          {currentRank}
+                        </td>
                         <td className="">
-                          <div className="ml-2 flex flex-row gap-x-2 align-bottom">
+                          <div className="ml-4 flex w-fit flex-row gap-x-2 align-bottom">
                             <Image
                               src={character.smallImgUrl}
                               alt={character.name}

@@ -27,7 +27,7 @@ const Matchup = () => {
     <>
       {matchup ? (
         <div className="flex h-full w-full flex-col items-center justify-center">
-          <h2 className="m-2 text-2xl">Choose your favorite</h2>
+          <h2 className="m-2 text-2xl">Who do you prefer?</h2>
           <div className="flex h-4/5 w-3/4 flex-col ">
             <div className="flex h-fit w-full flex-row justify-evenly">
               {matchup[0] ? (
