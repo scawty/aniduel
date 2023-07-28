@@ -67,7 +67,7 @@ const RankingTable = () => {
                         ref={ref}
                       >
                         <td className="text-center text-xl font-semibold">
-                          {currentRank}
+                          {!query && currentRank}
                         </td>
                         <td className="">
                           <div className="ml-4 flex w-fit flex-row gap-x-2 align-bottom">

@@ -10,7 +10,7 @@ export default function Home() {
         <meta name="description" content="Anime character leaderboad" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="flex h-screen justify-center overflow-clip">
+      <main className="flex h-screen justify-center overflow-scroll">
         <div className="flex h-full w-full flex-col md:max-w-5xl">
           <Navbar />
           <Matchup></Matchup>

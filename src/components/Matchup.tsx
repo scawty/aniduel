@@ -1,19 +1,46 @@
+import { useState } from "react";
 import MatchupCard from "~/components/MatchupCard";
 import { api } from "~/utils/api";
+import EloScore from "./EloScore";
 
 const Matchup = () => {
   const { data: matchup, refetch } = api.matchups.getMatchup.useQuery();
   const mutation = api.matchups.postMatchupResult.useMutation();
 
+  const [matchupState, setMatchupState] = useState<{
+    isComplete: boolean;
+    winnerId: number | null;
+    loserId: number | null;
+  }>({
+    isComplete: false,
+    winnerId: null,
+    loserId: null,
+  });
+
   const handleMatchupResult = (winner: number, loser: number) => {
-    //post the matchup result
-    mutation.mutate({ winnerId: winner, loserId: loser });
-    //get a new matchup
-    refetch()
-      .then()
-      .catch((error) => {
-        console.log(error);
-      });
+    setMatchupState({
+      isComplete: true,
+      winnerId: winner,
+      loserId: loser,
+    });
+
+    mutation.mutate(
+      { winnerId: winner, loserId: loser },
+      {
+        onSuccess: () => {
+          setMatchupState({
+            isComplete: false,
+            winnerId: winner,
+            loserId: loser,
+          });
+          refetch()
+            .then()
+            .catch((error) => {
+              console.log(error);
+            });
+        },
+      }
+    );
   };
 
   const handleSkip = () => {
@@ -28,6 +55,18 @@ const Matchup = () => {
       {matchup ? (
         <div className="flex h-full w-full flex-col items-center justify-center">
           <h2 className="m-2 text-2xl">Who do you prefer?</h2>
+          <div className="flex h-8 w-full flex-row justify-evenly">
+            <EloScore
+              show={matchupState.isComplete}
+              score={matchup[0]?.elo}
+              isWinner={matchup[0]?.id == matchupState.winnerId}
+            />
+            <EloScore
+              show={matchupState.isComplete}
+              score={matchup[1]?.elo}
+              isWinner={matchup[1]?.id == matchupState.winnerId}
+            />
+          </div>
           <div className="flex h-4/5 w-3/4 flex-col ">
             <div className="flex h-fit w-full flex-row justify-evenly">
               {matchup[0] ? (

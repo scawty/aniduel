@@ -25,15 +25,15 @@ export const matchupsRouter = createTRPCRouter({
   postMatchupResult: publicProcedure
     .input(z.object({ winnerId: z.number(), loserId: z.number() }))
     .mutation(async ({ ctx, input }) => {
+      console.time();
       const elo = new ELO();
-
+      console.timeEnd();
       const winner = await ctx.prisma.character.findUnique({
         where: { id: input.winnerId },
       });
       const loser = await ctx.prisma.character.findUnique({
         where: { id: input.loserId },
       });
-
       if (!winner) {
         throw new Error(`Winner with id ${input.winnerId} not found`);
       }
@@ -54,6 +54,9 @@ export const matchupsRouter = createTRPCRouter({
         data: { elo: newLoserRating },
       });
 
-      return [winnerData, loserData];
+      return {
+        winner: winnerData,
+        loser: loserData,
+      };
     }),
 });
