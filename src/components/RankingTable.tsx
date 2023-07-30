@@ -2,9 +2,11 @@ import { api } from "~/utils/api";
 import { useInView } from "react-intersection-observer";
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { BiSolidDownArrow, BiSolidUpArrow } from "react-icons/bi";
 
 const RankingTable = () => {
   const [query, setQuery] = useState("");
+  const [reverseOrder, setReverseOrder] = useState(false);
 
   const itemsPerPage = 20;
 
@@ -15,6 +17,7 @@ const RankingTable = () => {
       {
         limit: itemsPerPage,
         query: query,
+        reverse: reverseOrder,
       },
       {
         getNextPageParam: (lastPage) => lastPage.nextCursor,
@@ -49,7 +52,12 @@ const RankingTable = () => {
           <table className="w-full rounded-3xl sm:w-2/3">
             <thead>
               <tr>
-                <th>Rank</th>
+                <th onClick={() => setReverseOrder(!reverseOrder)}>
+                  <div className="flex w-full flex-row items-center justify-center gap-2">
+                    Rank
+                    {reverseOrder ? <BiSolidUpArrow /> : <BiSolidDownArrow />}
+                  </div>
+                </th>
                 <th>Character</th>
                 <th>Elo</th>
               </tr>
@@ -58,8 +66,9 @@ const RankingTable = () => {
               {data &&
                 data.pages.map((page, pageIndex) =>
                   page.characters.map((character, characterIndex) => {
-                    const currentRank =
-                      pageIndex * itemsPerPage + characterIndex + 1;
+                    const currentRank = reverseOrder
+                      ? 1000 - (pageIndex * itemsPerPage + characterIndex)
+                      : pageIndex * itemsPerPage + characterIndex + 1;
                     return (
                       <tr
                         key={character.id}

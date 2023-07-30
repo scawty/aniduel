@@ -9,10 +9,11 @@ export const charactersRouter = createTRPCRouter({
         cursor: z.number().nullish(),
         skip: z.number().optional(),
         query: z.string().optional(),
+        reverse: z.boolean().optional(),
       })
     )
     .query(async ({ ctx, input }) => {
-      const { limit, skip, cursor, query } = input;
+      const { limit, skip, cursor, query, reverse } = input;
 
       const characters = await ctx.prisma.character.findMany({
         skip: skip,
@@ -23,7 +24,9 @@ export const charactersRouter = createTRPCRouter({
           },
         },
         cursor: cursor ? { id: cursor } : undefined,
-        orderBy: [{ elo: "desc" }, { id: "asc" }],
+        orderBy: reverse
+          ? [{ elo: "asc" }, { id: "desc" }]
+          : [{ elo: "desc" }, { id: "asc" }],
       });
       let nextCursor: typeof cursor | undefined = undefined;
       if (characters.length > limit) {
