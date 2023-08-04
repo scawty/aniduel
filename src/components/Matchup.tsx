@@ -28,11 +28,13 @@ const Matchup = () => {
       { winnerId: winner, loserId: loser },
       {
         onSuccess: () => {
-          setMatchupState({
-            isComplete: false,
-            winnerId: winner,
-            loserId: loser,
-          });
+          setTimeout(() => {
+            setMatchupState({
+              isComplete: false,
+              winnerId: winner,
+              loserId: loser,
+            });
+          }, 100);
           refetch()
             .then()
             .catch((error) => {
