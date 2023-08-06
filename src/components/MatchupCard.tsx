@@ -17,8 +17,11 @@ const MatchupCard = ({ character, isLoading, handleMatchupResult }: Props) => {
             alt={character.name || "image1"}
             width={225}
             height={350}
-            className="rounded-lg hover:cursor-pointer"
+            className="rounded-lg opacity-0 transition-opacity duration-500 hover:cursor-pointer"
             onClick={handleMatchupResult}
+            onLoadingComplete={(image) => {
+              image.classList.remove("opacity-0");
+            }}
           ></Image>
           <h2 className="text-center text-xl">{character.name}</h2>
           <div className="flex w-full justify-center">

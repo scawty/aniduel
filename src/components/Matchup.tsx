@@ -34,7 +34,7 @@ const Matchup = () => {
               winnerId: winner,
               loserId: loser,
             });
-          }, 100);
+          }, 800);
           refetch()
             .then()
             .catch((error) => {
