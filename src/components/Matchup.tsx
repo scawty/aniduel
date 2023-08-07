@@ -111,7 +111,7 @@ const Matchup = () => {
         </div>
       ) : (
         <div className="flex h-full w-full flex-col items-center justify-center">
-          <h2 className="m-2 text-2xl">Choose your favorite</h2>
+          <h2 className="m-2 text-2xl">Who do you rank higher?</h2>
           <div className="flex h-4/5 w-3/4 flex-row justify-evenly">
             <MatchupCard isLoading={true} />
             <MatchupCard isLoading={true} />
