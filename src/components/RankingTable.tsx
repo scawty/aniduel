@@ -34,7 +34,7 @@ const RankingTable = () => {
   if (isError) return <div>Error!</div>;
 
   return (
-    <div className="overflow-scroll">
+    <div className="h-full overflow-scroll">
       <div className="flex w-full flex-row justify-center">
         <input
           className="m-4 w-1/3 rounded-md border-2 border-indigo-200 bg-indigo-950 p-2 focus:outline-indigo-400"
@@ -87,7 +87,7 @@ const RankingTable = () => {
                               height={32}
                               className="scale-105 rounded-full"
                             ></Image>
-                            <div className="align-text-bottom text-xl">
+                            <div className="truncate align-text-bottom text-xl">
                               {character.name}
                             </div>
                           </div>

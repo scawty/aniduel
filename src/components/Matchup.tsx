@@ -56,7 +56,7 @@ const Matchup = () => {
     <>
       {matchup ? (
         <div className="flex h-full w-full flex-col items-center justify-center">
-          <h2 className="m-2 text-2xl">Who do you prefer?</h2>
+          <h2 className="m-2 text-2xl">Who do you rank higher?</h2>
           <div className="flex h-8 w-full flex-row justify-evenly">
             <EloScore
               show={matchupState.isComplete}

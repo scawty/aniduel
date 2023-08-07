@@ -15,6 +15,7 @@ const MatchupCard = ({ character, isLoading, handleMatchupResult }: Props) => {
           <Image
             src={character.imgUrl || ""}
             alt={character.name || "image1"}
+            key={character.name}
             width={225}
             height={350}
             className="rounded-lg opacity-0 transition-opacity duration-500 hover:cursor-pointer"
