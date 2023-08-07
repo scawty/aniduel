@@ -46,7 +46,7 @@ const MatchupCard = ({ character, isLoading, handleMatchupResult }: Props) => {
         </div>
       ) : (
         <div className="m-4 h-fit w-[225px] animate-pulse">
-          <div className="h-[350px] w-[225px] rounded-lg border-2 border-indigo-300 bg-indigo-950"></div>
+          <div className="aspect-[9/14] rounded-lg border-2 border-indigo-300 bg-indigo-950"></div>
           <div className="m-2 h-4 justify-self-center rounded bg-indigo-400"></div>
           <div className="flex w-full justify-center">
             <svg
