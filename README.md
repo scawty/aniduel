@@ -1,12 +1,18 @@
-# Create T3 App
+# Aniduel
+
+[Aniduel](https://www.aniduel.com/) lets anime fans rank their favorite characters head to head to build a live global leaderboard of the most beloved anime characters. 
+
+# How it works
+
+Users are given a random matchup between two anime characters and choose the character they prefer. The characters have [Elo](https://en.wikipedia.org/wiki/Elo_rating_system) scores which are updated based on the result of each matchup.
+
+The character database was built from the top 1000 most favorited characters from [MyAnimeList](https://myanimelist.net/) using an unoffical API called [Jikan](https://jikan.moe/).
+
+# Made with create T3 App
 
 This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
 
-## What's next? How do I make an app with this?
-
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
-
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+## Technologies used
 
 - [Next.js](https://nextjs.org)
 - [NextAuth.js](https://next-auth.js.org)
@@ -23,6 +29,3 @@ To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the fo
 
 You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
 
-## How do I deploy this?
-
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
