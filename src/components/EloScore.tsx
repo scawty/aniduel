@@ -11,7 +11,7 @@ const EloScore = ({ show, score, isWinner }: Props) => {
     <>
       <Transition
         show={show}
-        leave="transition-opacity duration-100"
+        leave="transition-opacity duration-1000"
         leaveFrom="opacity-100"
         leaveTo="opacity-0"
       >
